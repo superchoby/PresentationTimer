@@ -34,7 +34,6 @@ class PracticeScript extends React.Component {
                 <div className='text-container'>
                     <p id='paragraph' className='script'>{this.props.script}</p>
                 </div>
-                {/* <button id='button' className='button pure-button' onClick={this.highlight} type='button'>Start</button> */}
                 <div className='timer-container'>
                     <button id='button' className='start-script-button' onClick={this.highlight} type='button'>Start</button>
                     {this.watch}
