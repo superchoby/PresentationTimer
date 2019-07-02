@@ -1,6 +1,12 @@
 import React from 'react';
 import './PracticeScript.css';
 import Stopwatch from './Stopwatch';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return { script: state.script,
+            totalMinutes: state.totalMinutes, };
+}
 
 class PracticeScript extends React.Component {
     constructor(props){
@@ -9,6 +15,9 @@ class PracticeScript extends React.Component {
         this.watch = <br />;
         this.totalTime = this.props.totalMinutes * 60;
         this.showTime = <br />
+        console.log(this.props.script)
+        console.log(this.props.script[0].script)
+
     }
 
     highlight = e => {
@@ -22,17 +31,18 @@ class PracticeScript extends React.Component {
     }
 
     componentDidMount() {
-        document.body.style.height = 'auto';
-        // document.body.style.height = '100%';
+    }
+
+    componentWillUnmount() {
+        console.log('unmount')
     }
 
     render() {
         
         return(
-            // <React.Fragment>
             <div id='script-container' className='second-page'>
                 <div className='text-container'>
-                    <p id='paragraph' className='script'>{this.props.script}</p>
+                    <p id='paragraph' className='script'>{this.props.script[0].script}</p>
                 </div>
                 <div className='timer-container'>
                     <button id='button' className='start-script-button' onClick={this.highlight} type='button'>Start</button>
@@ -40,10 +50,10 @@ class PracticeScript extends React.Component {
                     {this.showTime}
                 </div>
             </div>
-
-            //</React.Fragment>
         );
     }
 }
 
-export default PracticeScript;
+const Practice = connect(mapStateToProps)(PracticeScript);
+
+export default Practice;

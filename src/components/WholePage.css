@@ -1,8 +1,7 @@
 .original-div{
     height: 100%;
-    /* background-image: linear-gradient(to right, #0C73FF, #13C5FF); */
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
 

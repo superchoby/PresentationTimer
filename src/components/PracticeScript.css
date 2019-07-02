@@ -1,5 +1,107 @@
 
 .script {
+  font: 300 30px/1.5 "Helvetica Neue", sans-serif;
+  color: #d7a150;
+  text-decoration: none;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    	to right,
+	    #283271,
+	    #283271 50%,
+	    #d7a150 50%);
+	    background-size: 200% 100%;
+      background-position: 100%;
+  transition: 7s linear;
+  display: inline;
+  }
+
+.highlight {
+  background-position: 0%;
+}
+
+.text-container {
+  width: 85%;
+  margin: 20px auto;
+  word-wrap: break-word;
+  margin-bottom: 0;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 17px;
+  margin-bottom: 26px;
+}
+
+.time {
+  margin: 10px 20px;
+  font-family: digital-clock-font;
+  font-size: 40px;
+}
+
+@font-face {
+ font-family:'digital-clock-font';
+ src: url('../digital-mono-font.ttf');
+}
+
+#script-container {
+  /* overflow: hidden; */
+  margin-top: 85.5px;
+  margin-bottom: 85.5px;
+  width: 82%;
+}
+
+.second-page {
+  text-align: center;
+  background-color: white;
+  min-height: 650px;
+  margin-top: 30px;
+  height: auto;
+  margin: 0;
+  border-radius: 30px;
+}
+
+.start-script-button{
+  background-color: #fa5a5a;
+  color: white;	
+	padding: 15px 25px;
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.21);
+	border-bottom-color: rgba(0,0,0,0.34);
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+				      0 2px 0 -1px rgba(0,0,0,0.13), 
+				      0 3px 0 -1px rgba(0,0,0,0.08), 
+              0 3px 13px -1px rgba(0,0,0,0.21);
+}
+
+.start-script-button {
+	top: 1px;
+	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
+	position: relative;
+}
+
+@media only screen  and (min-width : 1024px) {
+  .script {
+    font: 300 37px/1.5 "Helvetica Neue", sans-serif;
+    }
+}
+
+@media only screen  and (min-width : 1224px) {
+  .script {
+    font: 300 39px/1.5 "Helvetica Neue", sans-serif;
+    }
+
+  #script-container {
+    width: 992px;
+  }
+}
+/* 
+.script {
   font: 300 42px/1.5 "Helvetica Neue", sans-serif;
   color: #d7a150;
   text-decoration: none;
@@ -48,7 +150,6 @@
 }
 
 #script-container {
-  /* overflow: hidden; */
   margin-top: 85.5px;
   margin-bottom: 85.5px;
 }
@@ -83,4 +184,4 @@
 	border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
 	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
 	position: relative;
-}
+} */

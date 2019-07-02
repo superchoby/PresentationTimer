@@ -1,5 +1,8 @@
 import React from 'react'
 import './FirstPage.css'
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { inputScript } from '../actions/index';
 
 let minutesArr = [];
 for(let i=0; i<10; i++){
@@ -11,9 +14,19 @@ for(let i=0; i<10; i++){
 
 };
 
+function mapDispatchToProps(dispatch){
+    return{
+        inputScript: script => dispatch(inputScript(script)),
+    };
+}
 class FirstPage extends React.Component {
     constructor(props){
         super(props);
+        this.state = {script: '',
+                        minutes: 1,
+                    };
+        this.storeScript = this.storeScript.bind(this);
+        this.storeMinutes = this.storeMinutes.bind(this);
         this.highlightExample = this.highlightExample.bind(this);
         this.removeHighlight = this.removeHighlight.bind(this);
         this.highlight = '';
@@ -30,6 +43,23 @@ class FirstPage extends React.Component {
             document.getElementById('example').classList.add('example');
             setTimeout(this.highlightExample, 1);
         }
+    }
+
+    storeMinutes = e => {
+        this.setState({minutes: e.target.value});
+    }
+
+    storeScript = e => {    
+        this.setState({script: document.getElementById('script-text-area').value, 
+                });
+        const { script } = this.state;
+        console.log('break')
+        this.props.inputScript({ script:'asdf' });
+    }
+
+    componentDidUpdate(){
+        console.log(this.state.script)
+        console.log('whatup')
     }
 
     highlightExample = () => {
@@ -63,14 +93,12 @@ class FirstPage extends React.Component {
                     <p id='example' className='example'>Example</p>
                     </div>
 
-                    {/* <div className='vertical-line'></div> */}
-
                     <div className="right-half column">
                         <h1 className='options'>No hassle, just copy paste your script,</h1>
                         <form>
-                            <textarea id="script-text-area" rows="12" cols="70"></textarea>
+                            <textarea id="script-text-area" rows="12"></textarea>
                             <h2 className='options'>and choose your minutes.</h2>
-                            <select className="minutes" name="minutes" onChange={this.props.storeMinutes}>
+                            <select className="minutes" name="minutes" onChange={this.storeMinutes}>
                                 {minutesArr.map((minute) =>
                                     <React.Fragment key={minute.value.toString()}>
                                         <option value={minute.value}>{minute.valuestr}</option>
@@ -79,14 +107,17 @@ class FirstPage extends React.Component {
                                 )}
                             </select>
                             <div>
-                                <input onClick={this.props.storeScript} type="submit" value="Submit" />
+                                <NavLink to='/practice-script'>
+                                    <input className='test' onClick={this.storeScript} type="submit" value="Submit" />
+                                </NavLink>
                             </div>
                         </form>
                     </div>
-                    
                 </div>
         );
     }
 }
 
-export default FirstPage;
+const Form = connect(null, mapDispatchToProps)(FirstPage);
+
+export default Form;

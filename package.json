@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "browserslist": "^4.6.3",
     "electron-version": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-responsive": "^7.0.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
@@ -33,7 +36,10 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "src/electron-starter.js",
   "devDependencies": {
-    "electron": "^5.0.6"
+    "electron": "^5.0.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "repository": {
     "type": "git",
@@ -46,4 +52,3 @@
   },
   "homepage": "https://timeyourprez.com"
 }
-

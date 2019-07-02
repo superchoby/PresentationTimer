@@ -1,0 +1,1 @@
+export const INPUT_SCRIPT = 'INPUT_SCRIPT';
