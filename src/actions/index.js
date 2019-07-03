@@ -1,5 +1,5 @@
 import { INPUT_SCRIPT } from '../constants/action-types';
 
-export function inputScript(payload) {
-    return { type:INPUT_SCRIPT, payload };
+export function inputScript(script, minutes) {
+    return { type:INPUT_SCRIPT, payload: {script, minutes} };
 }

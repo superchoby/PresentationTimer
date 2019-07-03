@@ -16,9 +16,10 @@ for(let i=0; i<10; i++){
 
 function mapDispatchToProps(dispatch){
     return{
-        inputScript: script => dispatch(inputScript(script)),
+        inputScript: (script, minutes) => dispatch(inputScript(script, minutes)),
     };
 }
+
 class FirstPage extends React.Component {
     constructor(props){
         super(props);
@@ -50,16 +51,12 @@ class FirstPage extends React.Component {
     }
 
     storeScript = e => {    
-        this.setState({script: document.getElementById('script-text-area').value, 
-                });
-        const { script } = this.state;
-        console.log('break')
-        this.props.inputScript({ script:'asdf' });
-    }
-
-    componentDidUpdate(){
-        console.log(this.state.script)
-        console.log('whatup')
+        // this.setState({script: document.getElementById('script-text-area').value, 
+        //         });
+        // const { script } = this.state;
+        // console.log('break')
+        this.props.inputScript(document.getElementById('script-text-area').value,
+                                document.getElementById('minutes').value);
     }
 
     highlightExample = () => {
@@ -98,7 +95,7 @@ class FirstPage extends React.Component {
                         <form>
                             <textarea id="script-text-area" rows="12"></textarea>
                             <h2 className='options'>and choose your minutes.</h2>
-                            <select className="minutes" name="minutes" onChange={this.storeMinutes}>
+                            <select id="minutes" className="minutes" name="minutes" onChange={this.storeMinutes}>
                                 {minutesArr.map((minute) =>
                                     <React.Fragment key={minute.value.toString()}>
                                         <option value={minute.value}>{minute.valuestr}</option>

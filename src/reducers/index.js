@@ -1,12 +1,12 @@
 const initialState = {
-    script: [],
+    scriptInfo: [],
 };
 
 function rootReducer(state = initialState, action){
     switch(action.type) {
         case 'INPUT_SCRIPT':
             return Object.assign({}, state, {
-                script: state.script.concat(action.payload)
+                scriptInfo: state.scriptInfo.concat(action.payload)
             })
 
         default:

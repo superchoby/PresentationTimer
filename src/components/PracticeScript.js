@@ -4,8 +4,9 @@ import Stopwatch from './Stopwatch';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-    return { script: state.script,
-            totalMinutes: state.totalMinutes, };
+    let scriptInfoIndex = state.scriptInfo.length - 1;
+    return { script: state.scriptInfo[scriptInfoIndex].script,
+            totalMinutes: state.scriptInfo[scriptInfoIndex].minutes, };
 }
 
 class PracticeScript extends React.Component {
@@ -15,9 +16,6 @@ class PracticeScript extends React.Component {
         this.watch = <br />;
         this.totalTime = this.props.totalMinutes * 60;
         this.showTime = <br />
-        console.log(this.props.script)
-        console.log(this.props.script[0].script)
-
     }
 
     highlight = e => {
@@ -30,19 +28,12 @@ class PracticeScript extends React.Component {
         document.getElementById('button').style.display = 'none';
     }
 
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
-        console.log('unmount')
-    }
-
     render() {
         
         return(
             <div id='script-container' className='second-page'>
                 <div className='text-container'>
-                    <p id='paragraph' className='script'>{this.props.script[0].script}</p>
+                    <p id='paragraph' className='script'>{this.props.script}</p>
                 </div>
                 <div className='timer-container'>
                     <button id='button' className='start-script-button' onClick={this.highlight} type='button'>Start</button>

@@ -6,7 +6,7 @@ import MediaQuery from 'react-responsive';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 class WholePage extends React.Component {
-                                           
+                                 
     render() {
         return(
             <div className='original-div'>
