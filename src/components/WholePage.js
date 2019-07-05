@@ -9,7 +9,7 @@ class WholePage extends React.Component {
                                  
     render() {
         return(
-            <div className='original-div'>
+            <React.Fragment>
                 <MediaQuery minDeviceWidth={768}>
                     <BrowserRouter>
                         <React.Fragment>
@@ -21,7 +21,7 @@ class WholePage extends React.Component {
                 <MediaQuery maxDeviceWidth={768}>
                     <p>Sorry you cannot view this on mobile</p>
                 </MediaQuery>
-            </div>
+            </React.Fragment>
         );
     }
 }

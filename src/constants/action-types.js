@@ -1,1 +1,2 @@
 export const INPUT_SCRIPT = 'INPUT_SCRIPT';
+export const INPUT_DIV_HEIGHT = 'INPUT_DIV_HEIGHT';

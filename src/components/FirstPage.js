@@ -2,7 +2,7 @@ import React from 'react'
 import './FirstPage.css'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { inputScript } from '../actions/index';
+import { inputScript, inputDivHeight } from '../actions/index';
 
 let minutesArr = [];
 for(let i=0; i<10; i++){
@@ -11,12 +11,12 @@ for(let i=0; i<10; i++){
                     valuePlusHalf: (i+1.5), 
                     valuePlusHalfstr: (i+1.5).toString(),
                 };
-
 };
 
 function mapDispatchToProps(dispatch){
     return{
         inputScript: (script, minutes) => dispatch(inputScript(script, minutes)),
+        inputDivHeight: (height) => dispatch(inputDivHeight(height)),
     };
 }
 
@@ -51,10 +51,6 @@ class FirstPage extends React.Component {
     }
 
     storeScript = e => {    
-        // this.setState({script: document.getElementById('script-text-area').value, 
-        //         });
-        // const { script } = this.state;
-        // console.log('break')
         this.props.inputScript(document.getElementById('script-text-area').value,
                                 document.getElementById('minutes').value);
     }
@@ -69,6 +65,8 @@ class FirstPage extends React.Component {
 
     componentDidMount(){
         this.highlight = setTimeout(this.highlightExample, 1);
+        document.getElementById('original-div').style.height = '100%';
+        this.props.inputDivHeight(document.getElementById('first-page').clientHeight);
     }
 
     componentWillUnmount(){
@@ -76,20 +74,16 @@ class FirstPage extends React.Component {
     }
 
     render() {
-
-        
         return(
-                <div className='first-page'>
-
+            <div id='original-div' className='original-div'>
+                <div id='first-page' className='first-page'>
                     <div className="left-half column">
                     <p className='intro-paragraph'>Hey there! Welcome to TimeYourPrez. Here you can figure out exactly
                     the pace you need to go to say your script within the desired time limit. Just read the words at the
                     rate they are highlighted and you are all set. Now, just follow the directions on the right and
                     let's get started!</p>
-
                     <p id='example' className='example'>Example</p>
                     </div>
-
                     <div className="right-half column">
                         <h1 className='options'>No hassle, just copy paste your script,</h1>
                         <form>
@@ -111,6 +105,7 @@ class FirstPage extends React.Component {
                         </form>
                     </div>
                 </div>
+            </div>
         );
     }
 }
