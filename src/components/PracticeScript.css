@@ -21,11 +21,7 @@
   background-position: 0%;
 }
 
-.dont-display{
-  display: none;
-}
-
-#paragraph{
+#paragraph {
   transition: 0s linear;
 }
 
@@ -59,7 +55,9 @@
   margin-top: 85.5px;
   margin-bottom: 85.5px;
   width: 82%;
-  height: auto;
+  min-height: 80%;
+  /* height: auto; */
+  /* height: 0; */
   /* margin-left: auto; */
 }
 
@@ -73,7 +71,7 @@
   border-radius: 30px;
 }
 
-.start-script-button{
+/* .start-script-button{
   background-color: #fa5a5a;
   color: white;	
 	padding: 15px 25px;
@@ -85,7 +83,7 @@
 				      0 2px 0 -1px rgba(0,0,0,0.13), 
 				      0 3px 0 -1px rgba(0,0,0,0.08), 
               0 3px 13px -1px rgba(0,0,0,0.21);
-}
+} */
 
 .start-script-button {
 	top: 1px;
@@ -94,44 +92,61 @@
 	position: relative;
 }
 
-/* @media only screen  and (min-width : 1024px) {
-  .script {
-    font: 300 37px/1.5 "Helvetica Neue", sans-serif;
-    }
-} */
-
-/* @media only screen  and (min-width : 1224px) {
-  .script {
-    font: 300 39px/1.5 "Helvetica Neue", sans-serif;
-    }
+@media only screen and (min-width: 804px){
 
   #script-container {
-    width: 992px;
-  } */
-
-  /*hajkldddddddddd*/
-
-  @media only screen and (min-width: 918px){
-
-    #script-container {
-        width: 836px;
-        /* height: 494px; */
-    }
+      width: 610px;
+      /* height: 494px; */
+  }
 }
 
-@media only screen and (min-width: 992px){
-    .script {
+@media only screen and (min-width: 866px){
+
+  #script-container {
+      width: 720px;
+      /* height: 494px; */
+  }
+}
+
+@media only screen and (min-width: 918px){
+
+  #script-container {
+      width: 766px;
+      /* height: 494px; */
+  }
+}
+
+@media only screen and (min-width: 997px){
+  #script-container {
+      width: 795px;
+      /* height: 555px; */
+  }
+}
+
+@media only screen and (min-width: 1029px){
+  #paragraph {
+    font: 300 37px/1.5 "Helvetica Neue", sans-serif;
+  }
+
+  #script-container {
+      width: 870px;
+      /* height: 555px; */
+  }
+}
+
+@media only screen and (min-width: 1081px){
+    #paragraph {
       font: 300 37px/1.5 "Helvetica Neue", sans-serif;
     }
 
     #script-container {
-        width: 924px;
+        width: 900px;
         /* height: 555px; */
     }
 }
 
-@media only screen and (min-width: 1200px){
-    .script {
+@media only screen and (min-width: 1258px){
+    #paragraph {
       font: 300 39px/1.5 "Helvetica Neue", sans-serif;
     }
 

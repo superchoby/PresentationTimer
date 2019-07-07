@@ -1,6 +1,5 @@
 import React from 'react';
 import './PracticeScript.css';
-import Stopwatch from './Stopwatch';
 import { connect } from 'react-redux';
 import ButtonOptions from './ScriptButtons';
 
@@ -17,24 +16,32 @@ class PracticeScript extends React.Component {
     constructor(props){
         super(props);
         this.highlight = this.highlight.bind(this);
-        this.watch = <br className='dont-display' />;
         this.totalTime = this.props.totalMinutes * 60;
+        this.pauseHighlight = this.pauseHighlight.bind(this);
     }
 
     highlight = e => {
-        document.getElementById('paragraph').style.transition = this.totalTime.toString() + 's linear';
-        document.getElementById('paragraph').className += " highlight";
-        this.watch = <Stopwatch totalMinutes={this.props.totalMinutes}/>
+        let script = document.getElementById('paragraph');
+        script.style.backgroundPosition = null;
+        script.style.transition = this.totalTime.toString() + 's linear';
+        script.classList.add('highlight');
+        this.forceUpdate();
+    }
+
+    pauseHighlight = e => {
+        let script = document.getElementById('paragraph');
+        script.style.transition = '';
+        let computedStyle = window.getComputedStyle(script);
+        let currentBackgroundPos = computedStyle.getPropertyValue('background-position');
+        script.style.backgroundPosition = currentBackgroundPos;
+        script.classList.remove('highlight');
         this.forceUpdate();
     }
 
     componentDidMount(){
-        console.log(document.getElementById('script-container').clientHeight)
-        console.log(this.props.height)
         if(this.props.script.length > 769){
             if(document.getElementById('script-container').clientHeight > this.props.height){
                 document.getElementById('original-div').style.height = 'auto';
-                console.log('activated')
             }
         }
     }
@@ -49,7 +56,9 @@ class PracticeScript extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <ButtonOptions watch = {this.watch} handleClick = {this.highlight} goalTime={this.goalTime} /> */}
+                {/* <div id='buttons-div'> */}
+                <ButtonOptions pauseHighlight={this.pauseHighlight} highlight={this.highlight} goalTime={this.props.totalMinutes} />
+                {/* </div> */}
             </React.Fragment>
         );
     }
