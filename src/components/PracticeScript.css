@@ -11,8 +11,8 @@
 	    #283271,
 	    #283271 50%,
 	    #d7a150 50%);
-	    background-size: 200% 100%;
-      background-position: 100%;
+	background-size: 200% 100%;
+  background-position: 100%;
   transition: 7s linear;
   display: inline;
   }
@@ -21,7 +21,7 @@
   background-position: 0%;
 }
 
-#paragraph {
+#script {
   transition: 0s linear;
 }
 

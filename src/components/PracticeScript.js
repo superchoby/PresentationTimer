@@ -15,27 +15,41 @@ const mapStateToProps = state => {
 class PracticeScript extends React.Component {
     constructor(props){
         super(props);
-        this.highlight = this.highlight.bind(this);
+        // this.highlight = this.highlight.bind(this);
         this.totalTime = this.props.totalMinutes * 60;
-        this.pauseHighlight = this.pauseHighlight.bind(this);
+        // this.pauseHighlight = this.pauseHighlight.bind(this);
+        this.state = {
+            backgroundPosition: '100%',
+        }
+        this.updateNotRepeat = true;
+        this.handleRewindHighlight = this.handleRewindHighlight.bind(this);
+        this.handleFastForwardHighlight = this.handleFastForwardHighlight.bind(this);
     }
 
-    highlight = e => {
-        let script = document.getElementById('paragraph');
-        script.style.backgroundPosition = null;
-        script.style.transition = this.totalTime.toString() + 's linear';
-        script.classList.add('highlight');
-        this.forceUpdate();
+    handleRewindHighlight = (valueEntered, totalSecondsPassed) => {
+        let newPosition = 100-((totalSecondsPassed-valueEntered)/this.totalTime)*100;
+        this.setState({
+            backgroundPosition: newPosition.toString()+'%',
+        });
+        document.getElementById('script').style.transition = '0s linear';
     }
 
-    pauseHighlight = e => {
-        let script = document.getElementById('paragraph');
-        script.style.transition = '';
-        let computedStyle = window.getComputedStyle(script);
-        let currentBackgroundPos = computedStyle.getPropertyValue('background-position');
-        script.style.backgroundPosition = currentBackgroundPos;
-        script.classList.remove('highlight');
-        this.forceUpdate();
+    handleFastForwardHighlight = (valueEntered, totalSecondsPassed) => {
+        let newPosition = 100-((totalSecondsPassed+valueEntered)/this.totalTime)*100;
+        this.setState({
+            backgroundPosition: newPosition.toString()+'%',
+        });
+        document.getElementById('script').style.transition = '0s linear';
+    }
+
+    componentDidUpdate = () =>{
+        if(this.updateNotRepeat){
+            document.getElementById('script').style.backgroundPosition = this.state.backgroundPosition;
+            this.forceUpdate();
+            this.updateNotRepeat=false;
+        }else{
+            this.updateNotRepeat=true;
+        }
     }
 
     componentDidMount(){
@@ -44,6 +58,7 @@ class PracticeScript extends React.Component {
                 document.getElementById('original-div').style.height = 'auto';
             }
         }
+        document.getElementById('script').style.backgroundPosition = this.state.backgroundPosition;
     }
 
     render() {
@@ -52,12 +67,12 @@ class PracticeScript extends React.Component {
                 <div id='original-div' className='original-div'>
                     <div id='script-container' className='second-page'>
                         <div className='text-container'>
-                            <p id='paragraph' className='script'>{this.props.script}</p>
+                            <p id='script' className='script'>{this.props.script}</p>
                         </div>
                     </div>
                 </div>
                 {/* <div id='buttons-div'> */}
-                <ButtonOptions pauseHighlight={this.pauseHighlight} highlight={this.highlight} goalTime={this.props.totalMinutes} />
+                <ButtonOptions handleFastForwardHighlight={this.handleFastForwardHighlight} handleRewindHighlight={this.handleRewindHighlight} pauseHighlight={this.pauseHighlight} highlight={this.highlight} goalTime={this.props.totalMinutes} />
                 {/* </div> */}
             </React.Fragment>
         );
