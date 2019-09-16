@@ -78,11 +78,12 @@ class FirstPage extends React.Component {
             <div id='original-div' className='original-div'>
                 <div id='first-page' className='first-page'>
                     <div className="left-half column">
-                    <p className='intro-paragraph'>Hey there! Welcome to TimeYourPrez. Here you can figure out exactly
+                    <p className='intro-paragraph'>Hey there! Welcome to AceYourPrez. Here you can figure out exactly
                     the pace you need to go to say your script within the desired time limit. Just read the words at the
                     rate they are highlighted and you are all set. Now, just follow the directions on the right and
                     let's get started!</p>
                     <p id='example' className='example'>Example</p>
+                    <div id='icon-attr'>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
                     </div>
                     <div className="right-half column">
                         <h1 className='options'>No hassle, just copy paste your script,</h1>

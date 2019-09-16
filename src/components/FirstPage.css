@@ -29,6 +29,10 @@ a {
     margin-left: 17px;
 }
 
+#icon-attr{
+    visibility: hidden;
+}
+
 .example {
     margin: 0;
     font: 300 42px/1.5 "Helvetica Neue", sans-serif;
